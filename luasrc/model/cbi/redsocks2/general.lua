@@ -35,6 +35,8 @@ o.datatype = "uinteger"
 o = s:option(ListValue, "proxy_type", translate("Proxy Server Type"))
 o:value("shadowsocks", translate("Shadowsocks"))
 o:value("socks5", translate("Socks5"))
+o:value("http-relay", translate("http-relay"))
+o:value("http-connect", translate("https"))
 o:value("direct", translate("Direct"))
 
 o = s:option(ListValue, "enc_type", translate("Cipher Method"))
@@ -57,10 +59,14 @@ o:value("seed-cfb")
 
 o = s:option(Value, "username", translate("Username"), translate("Leave empty if your proxy server doesn't need authentication."))
 o:depends({proxy_type="socks5"})
+o:depends({proxy_type="http-relay"})
+o:depends({proxy_type="http-connect"})
 
 o = s:option(Value, "password", translate("Password"))
 o:depends({proxy_type="shadowsocks"})
 o:depends({proxy_type="socks5"})
+o:depends({proxy_type="http-relay"})
+o:depends({proxy_type="http-connect"})
 o.password = true
 
 o = s:option(Value, "interface", translate("Outgoing interface"), translate("Outgoing interface for redsocks2."))
@@ -93,6 +99,8 @@ o.datatype = "uinteger"
 o = s:option(ListValue, "proxy_type", translate("Proxy Server Type"))
 o:value("shadowsocks", translate("Shadowsocks"))
 o:value("socks5", translate("Socks5"))
+o:value("http-relay", translate("http-relay"))
+o:value("http-connect", translate("https"))
 o:value("direct", translate("Direct"))
 
 o = s:option(ListValue, "enc_type", translate("Cipher Method"))
@@ -115,9 +123,13 @@ o:value("seed-cfb")
 
 o = s:option(Value, "username", translate("Username"), translate("Leave empty if your proxy server doesn't need authentication."))
 o:depends({proxy_type="socks5"})
+o:depends({proxy_type="http-relay"})
+o:depends({proxy_type="http-connect"})
 
 o = s:option(Value, "password", translate("Password"))
 o:depends({proxy_type="shadowsocks"})
+o:depends({proxy_type="http-relay"})
+o:depends({proxy_type="http-connect"})
 o:depends({proxy_type="socks5"})
 o.password = true
 
